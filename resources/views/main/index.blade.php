@@ -1,21 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <title>Moderna Bootstrap Template - Index</title>
-    
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <meta content="" name="descriptison">
-  <meta content="" name="keywords">
-  @include('main.template.styles')
-</head>
-
-<body>
-    @include('main.template.header')
-    
-    @yield(‘content’)
-  <!-- ======= Hero Section ======= -->
+@extends('main.template.template')
+@section('content')
+<!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex justify-cntent-center align-items-center">
     <div id="heroCarousel" class="container carousel carousel-fade" data-ride="carousel">
 
@@ -214,13 +199,4 @@
     </section><!-- End Features Section -->
 
   </main><!-- End #main -->
-
-    @include('main.template.footer')
-
-  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
-    
-    @include('main.template.js')
-
-</body>
-
-</html>
+@stop

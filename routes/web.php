@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('main.template.index');
+    return view('main.index');
 })->name('/');
 
 Route::get('/about', 'AboutController@view')->name('about');
@@ -28,3 +28,8 @@ Route::get('/portfolio', 'PortfolioController@view')->name('portfolio');
 Route::get('/services', 'ServicesController@view')->name('services');
 
 Route::get('/team', 'TeamController@view')->name('team');
+
+/*AUTH SECTION START*/
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
+/*AUTH SECTION END*/
