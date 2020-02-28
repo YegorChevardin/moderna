@@ -17,7 +17,11 @@ Route::get('/', function () {
 
 Route::get('/about', 'AboutController@view')->name('about');
 
-Route::get('/blog-single', 'Blog-singleController@view')->name('blog-single');
+Route::get('/blog-single/{id?}', 'BlogsingleController@view')->name('blog-single');
+
+Route::post('/blog-single', 'BlogsingleController@addComment')->name('addComment');
+
+Route::post('/blog', 'BlogController@ajax')->name('blog');
 
 Route::get('/blog', 'BlogController@view')->name('blog');
 
@@ -33,3 +37,7 @@ Route::get('/team', 'TeamController@view')->name('team');
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 /*AUTH SECTION END*/
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});

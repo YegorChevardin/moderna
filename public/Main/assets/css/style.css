@@ -69,7 +69,7 @@ h1, h2, h3, h4, h5, h6, .font-primary {
 }
 
 #header.header-transparent {
-  background: none;
+  /*background: none;*/
 }
 
 #header.header-scrolled {

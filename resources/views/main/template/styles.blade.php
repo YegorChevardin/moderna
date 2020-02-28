@@ -1,4 +1,5 @@
 <!-- Favicons -->
+<meta name="csrf-token" content="{{ csrf_token() }}">
   <link href="{{asset('main/assets/img/favicon.png')}}" rel="icon">
   <link href="{{asset('main/assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
 
@@ -17,9 +18,57 @@
   <!-- Template Main CSS File -->
   <link href="{{asset('main/assets/css/style.css')}}" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: Moderna - v2.0.0
-  * Template URL: https://bootstrapmade.com/free-bootstrap-template-corporate-moderna/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+<script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+    var counter = Number('1');
+    
+    $(document).on('click', '#addBlog', function(event) {
+        event.preventDefault();
+        var value = Number('2');
+        counter += value;
+        myfunc(counter);
+    });
+    
+    function myfunc(counter) {
+        $.ajax({
+          method: "POST",
+          headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+          url: "{{ route('blog') }}",
+          data: { addBlog: counter }
+        })
+          .done(function( data ) {
+            $('#refresh').html(data);
+          });
+    }
+</script>
+
+<!--<script type="text/javascript">
+      var counter = Number("2");
+      $(document).on('click', '#addBlog', function(event){
+            event.preventDefault();
+            var value = Number("2");
+            counter += value;
+//          console.log(counter);
+          myfunc(counter);
+      });
+      function myfunc(counter){
+            $.ajax({
+                    url: "{{ route('blog') }}",
+                    method: "POST",
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    data: { addBlog: counter }
+                  })
+                    .done (function (data){
+//                        console.log(data);
+                    $('#refresh').html(data);
+                    });          
+      }
+  </script>-->
